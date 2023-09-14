@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer components{
+    
+    input{
+        @apply focus:outline-none
+    }
+
+    .form-control{
+        @apply transition duration-200 ease-in-out w-full text-sm bg-white shadow-sm rounded-md p-[0.4rem_0.8rem] border border-slate-200
+        placeholder:text-gray-400/90 
+        focus:ring-2 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 
+        disabled:bg-gray-100 disabled:cursor-not-allowed text-gray-900
+    }
+
+}

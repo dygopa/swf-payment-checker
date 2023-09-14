@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer components{
+    
+    .btn{
+        @apply rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 shadow h-fit px-4 py-2 gap-2
+    }
+
+    .btn:disabled,
+    .btn[disabled]
+    {
+        @apply cursor-not-allowed opacity-40 select-none
+    }
+
+    .btn-block{
+        @apply w-full
+    }
+
+    .btn-white{
+        @apply bg-white hover:bg-slate-100 text-slate-700
+    }
+
+    .btn-black{
+        @apply bg-slate-900 hover:bg-slate-950 text-white
+    }
+
+    .btn-primary{
+        @apply bg-primary text-white
+    }
+
+    .btn-red{
+        @apply bg-red-300 hover:bg-red-400 text-red-700
+    }
+
+    .btn-yellow{
+        @apply bg-yellow-300 hover:bg-yellow-400 text-yellow-700
+    }
+
+    .btn-blue{
+        @apply bg-blue-300 hover:bg-blue-400 text-blue-700
+    }
+
+    .btn-green{
+        @apply bg-green-300 hover:bg-green-400 text-green-700
+    }
+
+    .btn-outline-white{
+        @apply transition border border-white hover:bg-slate-100 text-white hover:text-slate-950
+    }
+
+    .btn-outline-black{
+        @apply transition border border-slate-900 hover:bg-slate-950 text-white
+    }
+
+    .btn-outline-primary{
+        @apply transition border border-primary bg-transparent hover:bg-primary text-primary hover:text-white
+    }
+
+    .btn-outline-red{
+        @apply transition border border-red-300 hover:bg-red-400 text-red-700
+    }
+
+    .btn-outline-yellow{
+        @apply transition border border-yellow-300 hover:bg-yellow-400 text-yellow-700
+    }
+
+    .btn-outline-blue{
+        @apply transition border border-blue-300 hover:bg-blue-400 text-blue-700
+    }
+
+    .btn-outline-green{
+        @apply transition border border-green-300 hover:bg-green-400 text-green-700
+    }
+}
