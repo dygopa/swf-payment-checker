@@ -26,7 +26,7 @@ function main() {
   },[error])
 
   useMemo(()=>{
-    if(successful) history(data["LinkPago"])
+    if(successful) window.location.href = data["LinkPago"]
     //if(successful) history("/success")
   },[successful])
 

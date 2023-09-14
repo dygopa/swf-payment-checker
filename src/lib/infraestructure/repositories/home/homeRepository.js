@@ -19,9 +19,9 @@ export class HomeRepository {
 
             let data = await response.json();
             
-            if(data["Success"] !== 1) return new Error(error);
+            if(data[0]["Success"] !== 1) return new Error(error);
 
-            return data;
+            return data[0];
         } catch (error) {
             return new Error(error);
         }
