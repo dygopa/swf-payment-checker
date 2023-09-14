@@ -19,7 +19,7 @@ export class HomeRepository {
 
             let data = await response.json();
             
-            if(data[0]["Success"] !== 1) return new Error(error);
+            if(data[0]["Success"] !== 1) return new Error(data[0]["Mensaje"]);
             console.log(data[0])
 
             return data[0];
