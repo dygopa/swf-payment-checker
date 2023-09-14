@@ -3,8 +3,8 @@ import InputGroup from '../core/Inputs/InputGroup/InputGroup'
 import DefaultInput from '../core/Inputs/DefaultInput/DefaultInput'
 import Button from '../core/Buttons/Buttons'
 import { HomeContext } from './context/HomeContext'
-import { useNavigate } from 'react-router-dom'
 import { FiLink } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom'
 
 function main() {
 
@@ -16,6 +16,7 @@ function main() {
   let history = useNavigate()
 
   const [formData, setFormData] = useState({
+    policy: null,
     id: null,
     passport: null,
     ruc: null
@@ -23,36 +24,47 @@ function main() {
 
   useMemo(()=>{
     if(error) history("/error")
-    if(successful) window.location.href = data["LinkPago"]
-    //if(successful) history("/success")
+    if(successful) window.open(data["LinkPago"], '_blank', 'noopener,noreferrer');
   },[loading])
 
   return (
     <div className='w-full h-fit flex flex-col justify-start items-center gap-5'>
       <p className='text-base text-slate-900 font-light'>Por favor, introduzca su número de identificación </p>
       <div className='w-full flex flex-col justify-start items-center gap-5'>
-        <InputGroup label={"Cédula"}>
-          <DefaultInput type="text" disabled={formData.passport || formData.ruc} 
+        <InputGroup label={"Nro. de Póliza"}>
+          <DefaultInput type="text" disabled={formData.id || formData.passport || formData.ruc} 
             onChange={(e)=>{ setFormData({
+              policy: e.target.value,
+              id: null,
+              passport: null,
+              ruc: null,
+            }) }} />
+        </InputGroup>
+        <InputGroup label={"Cédula"}>
+          <DefaultInput type="text" disabled={formData.policy || formData.passport || formData.ruc} 
+            onChange={(e)=>{ setFormData({
+              policy: null,
               id: e.target.value,
               passport: null,
               ruc: null
             }) }} />
         </InputGroup>
         <InputGroup label={"RUC"}>
-          <DefaultInput type="text" disabled={formData.passport || formData.id} 
+          <DefaultInput type="text" disabled={formData.policy || formData.passport || formData.id} 
             onChange={(e)=>{ setFormData({
+              policy: null,
               id: null,
+              ruc: e.target.value,
               passport: null,
-              ruc: e.target.value
             }) }} />
         </InputGroup>
         <InputGroup label={"Pasaporte"}>
-          <DefaultInput type="text" disabled={formData.id || formData.ruc} 
+          <DefaultInput type="text" disabled={formData.policy || formData.id || formData.ruc} 
             onChange={(e)=>{ setFormData({
+              policy: null,
               id: null,
+              ruc: null,
               passport: e.target.value,
-              ruc: null
             }) }} />
         </InputGroup>
       </div>
@@ -64,6 +76,7 @@ function main() {
         disabled={
           (!formData.ruc &&
           !formData.passport &&
+          !formData.policy &&
           !formData.id) 
           || 
           loading
