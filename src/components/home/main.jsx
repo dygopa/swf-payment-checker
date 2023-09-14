@@ -23,12 +23,9 @@ function main() {
 
   useMemo(()=>{
     if(error) history("/error")
-  },[error])
-
-  useMemo(()=>{
     if(successful) window.location.href = data["LinkPago"]
     //if(successful) history("/success")
-  },[successful])
+  },[loading])
 
   return (
     <div className='w-full h-fit flex flex-col justify-start items-center gap-5'>

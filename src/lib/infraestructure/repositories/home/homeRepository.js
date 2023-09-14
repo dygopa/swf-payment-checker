@@ -20,6 +20,7 @@ export class HomeRepository {
             let data = await response.json();
             
             if(data[0]["Success"] !== 1) return new Error(error);
+            console.log(data[0])
 
             return data[0];
         } catch (error) {
